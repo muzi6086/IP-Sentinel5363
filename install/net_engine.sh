@@ -137,7 +137,10 @@ do_assemble_fallback() {
             read -p "请输入节点展示别名 (如'纽约机房', 回车使用默认): " CUSTOM_ALIAS
 
             if [ -n "$CUSTOM_ALIAS" ]; then
-                NODE_ALIAS=$(echo "$CUSTOM_ALIAS" | tr -d '"'\''\`\$\|&;<>\n\r' | cut -c 1-20)
+                # 挂载 UTF-8 环境，防止原生 Bash 在 C Locale 下对多字节汉字进行错误截断
+                export LC_ALL=C.UTF-8 2>/dev/null || export LC_ALL=en_US.UTF-8 2>/dev/null || true
+                CLEAN_ALIAS=$(echo "$CUSTOM_ALIAS" | tr -d '"'\''\`\$\|&;<>\n\r')
+                NODE_ALIAS="${CLEAN_ALIAS:0:20}"
                 [ -z "$NODE_ALIAS" ] && NODE_ALIAS="$NODE_NAME"
             fi
             echo -e "✅ 已锁定节点展示别名: \033[32m$NODE_ALIAS\033[0m"
