@@ -153,5 +153,5 @@ bash <(curl -sL https://raw.githubusercontent.com/hotyue/IP-Sentinel/legacy/core
 如果你觉得这个项目对你有帮助，欢迎关注我的个人博客，我会定期分享技术教程。
 
 
-## Stargazers over time
+### 📈 Stargazers over time
 ![Star History](https://raw.githubusercontent.com/hotyue/IP-Sentinel/main/data/star_history.svg)
