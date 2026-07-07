@@ -5,6 +5,10 @@ on:
     - cron: '0 0 * * *' # 每天 UTC 零点自动触发执行
   workflow_dispatch: # 允许您在 GitHub 网页上手动点击运行
 
+# 👇 [核心修复] 显式向 GitHub 申请对代码库的写入权限
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
