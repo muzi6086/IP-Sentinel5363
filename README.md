@@ -154,4 +154,4 @@ bash <(curl -sL https://raw.githubusercontent.com/hotyue/IP-Sentinel/legacy/core
 
 
 ## Stargazers over time
-[![Stargazers over time](https://starchart.cc/hotyue/IP-Sentinel.svg?variant=adaptive)](https://starchart.cc/hotyue/IP-Sentinel)
+![Star History](https://raw.githubusercontent.com/hotyue/IP-Sentinel/main/data/star_history.svg)

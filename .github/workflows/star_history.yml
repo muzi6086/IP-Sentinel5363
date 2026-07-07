@@ -1,0 +1,27 @@
+name: Generate Star History
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天 UTC 零点自动触发执行
+  workflow_dispatch: # 允许您在 GitHub 网页上手动点击运行
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Generate Star History SVG
+        uses: dyte-io/star-history-action@v1.0.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          output: 'data/star_history.svg'
+
+      - name: Commit & Push Changes
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/star_history.svg
+          git commit -m "chore: 自动化更新 Star 趋势图" || exit 0
+          git push origin main
